@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-利用hexo&amp;netlify的博客搭建" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/06/29/%E5%88%A9%E7%94%A8hexo&netlify%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time class="dt-published" datetime="2023-06-29T01:45:16.155Z" itemprop="datePublished">2023-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>参考：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/39923772">Hexo+Netlify快速搭建个人博客 - 知乎 (zhihu.com)</a><br><a target="_blank" rel="noopener" href="https://blog.cuijiacai.com/blog-building/">https://blog.cuijiacai.com/blog-building/</a></p>
+</blockquote>
+<h2 id="博客的组成"><a href="#博客的组成" class="headerlink" title="博客的组成"></a>博客的组成</h2><h3 id="1博客生成框架-Hexo"><a href="#1博客生成框架-Hexo" class="headerlink" title="1博客生成框架(Hexo)"></a>1博客生成框架(Hexo)</h3><p>帮组我们将用户输入(YML , Markdown)转换为一个完整的复杂的前端界面(网站目录, 存放在public)![[Pasted image 20230623155627.png]]</p>
+<h3 id="2文件托管平台-github"><a href="#2文件托管平台-github" class="headerlink" title="2文件托管平台(github)"></a>2文件托管平台(github)</h3><p>让我们将文件储存在云端, 提供访问和修改的接口(git)</p>
+<h3 id="3站点部署服务-github-pages-netlify"><a href="#3站点部署服务-github-pages-netlify" class="headerlink" title="3站点部署服务(github_pages, netlify)"></a>3站点部署服务(github_pages, netlify)</h3><h3 id="4访问加速服务-CDN"><a href="#4访问加速服务-CDN" class="headerlink" title="4访问加速服务(CDN)"></a>4访问加速服务(CDN)</h3><p>![[Pasted image 20230623160319.png]]</p>
+<h2 id="建站实操"><a href="#建站实操" class="headerlink" title="建站实操"></a>建站实操</h2><p>新建完成后的文件夹目录<br>![[Pasted image 20230624084240.png]]</p>
+<blockquote>
+<ul>
+<li>_config.yml：网站的配置信息，您可以在此配置大部分的参数。</li>
+<li>.gitignore：告诉 Git 哪些文件不需要添加到版本管理中。</li>
+<li>node_modules：项目所依赖的模块。</li>
+<li>package.json：记录整个项目中的一些基础信息。</li>
+<li>package-lock.json：确定当前安装包的依赖，以便后续重新安装的时候生成相同的依赖。</li>
+<li>scaffolds：模板文件夹，当您新建文章时，Hexo 会根据 scaffold 来建立文件，Hexo 的模板是指在新建的 Markdown 文件中默认填充的内容。例如，如果您修改 scaffold&#x2F;post.md 中的 Front-matter 内容，那么每次新建一篇文章时都会包含这个修改。</li>
+<li>source：资源文件夹是存放用户资源的地方，除 <code>_post</code> 文件夹之外，开头命名为 <code>_</code> (下划线) 的文件&#x2F;文件夹和隐藏的文件会被忽略。Markdown 和 HTML 文件会被解析并放到 <code>public</code> 文件夹，而其他文件会被拷贝过去。</li>
+<li>themes：主题文件夹。Hexo 会根据主题来生成静态页面。</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/06/29/%E5%88%A9%E7%94%A8hexo&netlify%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" data-id="cljghhawd0001psaqegu26k9h" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-first" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/06/29/first/" class="article-date">
+  <time class="dt-published" datetime="2023-06-29T01:43:05.000Z" itemprop="datePublished">2023-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/06/29/first/">first</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/06/29/first/" data-id="cljghhaw50000psaq8cr88v4h" data-title="first" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-111" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/06/24/111/" class="article-date">
+  <time class="dt-published" datetime="2023-06-24T00:16:50.000Z" itemprop="datePublished">2023-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/06/24/111/">111</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/06/24/111/" data-id="clj997c7u0000wgaqe6rh7qce" data-title="111" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/06/23/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2023-06-23T08:27:38.227Z" itemprop="datePublished">2023-06-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/06/23/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/06/23/hello-world/" data-id="clj997c840001wgaq6pvt53zt" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/06/29/%E5%88%A9%E7%94%A8hexo&netlify%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/06/29/first/">first</a>
+          </li>
+        
+          <li>
+            <a href="/2023/06/24/111/">111</a>
+          </li>
+        
+          <li>
+            <a href="/2023/06/23/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
