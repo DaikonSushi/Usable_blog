@@ -52,7 +52,7 @@ avatar:
 disable_top_img: false
 
 # The banner image of home page
-index_img: /img/屏幕截图 2023-07-22 153819.png
+index_img: /img/sky.png
 
 # If the banner of page not setting, it will show the top_img
 default_top_img: /img/dtop.png
